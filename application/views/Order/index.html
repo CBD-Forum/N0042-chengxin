@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>美力泉</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="description" content="美力泉">
+        <link rel="stylesheet" href="../lib/weui.min.css">
+        <link rel="stylesheet" href="../css/jquery-weui.css">
+        <link rel="stylesheet" href="../css/demos.css">
+    </head>
+
+    <body ontouchstart>
+        <div class="weui-tab">
+            <div class="weui-tab__bd">
+                <div id="tab1" class="weui-tab__bd-item">
+                </div>
+                <div id="tab2" class="weui-tab__bd-item weui-tab__bd-item--active">
+                    <?php foreach($orders as $order) { ?>
+                    <div class="weui-panel weui-panel_access">
+                        <div class="weui-panel__hd">订单编号：<?php echo $order->id; ?>，下单时间：<?php echo Date("Y-m-d H:i:s", $order->created_at); ?></div>
+                        <div class="weui-panel__ft">
+                            <a href="javascript:void(0);" class="weui-cell weui-cell_link">
+                                <div class="weui-cell__bd">收货地址</div>
+                                <span class="weui-cell__ft">
+                                    <p><?php echo $order->address;?></p>
+                                    <p><?php echo $order->name;?></p>
+                                    <p><?php echo $order->phone;?></p>
+                                </span>
+                            </a>    
+                        </div>
+                        <div class="weui-panel__bd">
+                            <?php $details = json_decode($order->detail); ?>
+                            <?php foreach($details as $detail) { ?>
+                            <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                                <div class="weui-media-box__hd">
+                                    <img class="weui-media-box__thumb" src="<?php echo $detail[0]; ?>" alt="">
+                                </div>
+                                <div class="weui-media-box__bd">
+                                    <h4 class="weui-media-box__title"><?php echo $detail[1]; ?></h4>
+                                    <p class="weui-media-box__desc">价格：￥<?php echo $detail[2]; ?>，数量：<?php echo $detail[3]; ?></p>
+                                </div>
+                            </a>
+                            <?php } ?>
+                        </div>
+                        <div class="weui-panel__ft">
+                            <a href="javascript:void(0);" class="weui-cell weui-cell_link">
+                                <div class="weui-cell__bd">订单状态</div>
+                                <span class="weui-cell__ft">
+                                    <?php echo $order_status_arr[$order->status]; ?>
+                                </span>
+                            </a>    
+                        </div>
+                    </div>
+                    <?php } ?>
+                </div>
+                <div id="tab3" class="weui-tab__bd-item">
+                </div>
+                <div id="tab4" class="weui-tab__bd-item ">
+                </div>
+            </div>
+
+            <div class="weui-tabbar">
+                <a href="<?php echo base_url(); ?>" class="weui-tabbar__item">
+                    <div class="weui-tabbar__icon">
+                        <img src="<?php echo base_url('images/icon_nav_button.png'); ?>" alt="">
+                    </div>
+                    <p class="weui-tabbar__label">首页</p>
+                </a>
+                <a href="<?php echo base_url('home/cart'); ?>" class="weui-tabbar__item weui-bar__item-on">
+                    <div class="weui-tabbar__icon">
+                        <img src="<?php echo base_url('images/icon_nav_msg.png'); ?>" alt="">
+                    </div>
+                    <p class="weui-tabbar__label">购物车</p>
+                </a>
+                <a href="<?php echo base_url('home/news'); ?>" class="weui-tabbar__item">
+                    <span class="weui-badge" style="position: absolute;top: -.4em;right: 1em;">1</span>
+                    <div class="weui-tabbar__icon">
+                        <img src="<?php echo base_url('images/icon_nav_article.png'); ?>" alt="">
+                    </div>
+                    <p class="weui-tabbar__label">通知</p>
+                </a>
+                <a href="<?php echo base_url('user/index'); ?>" class="weui-tabbar__item">
+                    <div class="weui-tabbar__icon">
+                        <img src="<?php echo base_url('images/icon_nav_cell.png'); ?>" alt="">
+                    </div>
+                    <p class="weui-tabbar__label">账户</p>
+                </a>
+            </div>
+        </div>
+
+        <script src="../lib/jquery-2.1.4.js"></script>
+        <script src="../lib/fastclick.js"></script>
+        <script>
+            $(function() {
+                FastClick.attach(document.body);
+            });
+        </script>
+        <script src="../js/jquery-weui.js"></script>
+        <script src="../js/swiper.js"></script>
+        <script>
+            $(".swiper-container").swiper({
+                loop: true,
+                autoplay: 3000
+            });
+        </script>
+    </body>
+</html>

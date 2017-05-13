@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>美力泉</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="description" content="美力泉">
+        <link rel="stylesheet" href="../lib/weui.min.css">
+        <link rel="stylesheet" href="../css/jquery-weui.css">
+        <link rel="stylesheet" href="../css/demos.css">
+    </head>
+
+    <body ontouchstart>
+        <div class="weui-tab">
+            <div class="weui-tab__bd">
+                <div id="tab1" class="weui-tab__bd-item">
+                </div>
+                <div id="tab2" class="weui-tab__bd-item weui-tab__bd-item--active">
+                    <div class="weui-panel__hd">请选择收货地址</div>
+                    <a class="weui-cell weui-cell_access" id="choose_address_a" href="#">
+                        <div class="weui-cell__bd weui-cell_primary">
+                            <p>收货地址</p>
+                        </div>
+                        <span class="weui-cell__ft">
+                            <?php if($addresses) { ?>
+                                <p><?php echo $addresses[0]->address; ?></p>
+                                <p><?php echo $addresses[0]->name; ?></p>
+                                <p><?php echo $addresses[0]->phone; ?></p>
+                            <?php } ?>
+                        </span>
+                    </a>
+                    <div class="weui-cells__title">请选择商品</div>
+                    <div class="weui-flex">
+                        <div class="weui-flex__item" style="width:80%;">
+                            <div class="weui-cells weui-cells_checkbox">
+                                <label class="weui-cell weui-check__label" for="s11">
+                                    <div class="weui-cell__hd">
+                                        <input type="checkbox" name="checkbox1" class="weui-check" id="s11">
+                                        <i class="weui-icon-checked"></i>
+                                    </div>
+                                    <div class="weui-cell__bd">
+                                        <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                                            <div class="weui-media-box__hd">
+                                                <img class="weui-media-box__thumb" src="../images/product11.png" alt="">
+                                            </div>
+                                            <div class="weui-media-box__bd">
+                                                <h4 class="weui-media-box__title">三花牌口服液</h4>
+                                                <p class="weui-media-box__desc">价格：￥1500</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="weui-flex__item" style="padding-top:58px;width:18%;display:none;" id="s11_div">
+                                <div class="weui-cell_hd">
+                                    <input class="btnMinus" type="button" value="-" style="width:18px;height:18px"/>
+                                    <input id="s11_input" type="text" value="0" style="width:18px;height:18px;"/>
+                                    <input class="btnPlus" type="button" value="+" style="width:18px;height:18px"/>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="weui-flex">
+                        <div class="weui-flex__item" style="width:80%;">
+                            <div class="weui-cells weui-cells_checkbox">
+                                <label class="weui-cell weui-check__label" for="s12">
+                                    <div class="weui-cell__hd">
+                                        <input type="checkbox" name="checkbox1" class="weui-check" id="s12">
+                                        <i class="weui-icon-checked"></i>
+                                    </div>
+                                    <div class="weui-cell__bd">
+                                        <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                                            <div class="weui-media-box__hd">
+                                                <img class="weui-media-box__thumb" src="../images/product12.png" alt="">
+                                            </div>
+                                            <div class="weui-media-box__bd">
+                                                <h4 class="weui-media-box__title">白藜芦醇果汁</h4>
+                                                <p class="weui-media-box__desc">价格：￥2000</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="weui-flex__item" style="padding-top:58px;width:18%;display:none;" id="s12_div">
+                                <div class="weui-cell_hd">
+                                    <input class="btnMinus" type="button" value="-" style="width:18px;height:18px"/>
+                                    <input id="s12_input" type="text" value="0" style="width:18px;height:18px;"/>
+                                    <input class="btnPlus" type="button" value="+" style="width:18px;height:18px"/>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="weui-flex">
+                        <div class="weui-flex_item">
+                            <div class="weui-cells__title">订单总金额：<span id="amount_span">0</span></div>
+                        </div>
+                    </div>
+                    <div class="weui-btn-area">
+                        <a class="weui-btn weui-btn_primary" href="javascript:" id="order_btn">下单</a>
+                        <a class="weui-btn weui-btn_default" href="<?php echo base_url('cash/recharge'); ?>">我的资金：￥<span id="cash_amount_span" value="<?php echo $user_detail->cash_amount; ?>"><?php echo $user_detail->cash_amount; ?></span>，去充值</a>
+                    </div>
+                </div>
+                <div id="tab3" class="weui-tab__bd-item">
+                    <div class="weui-cells__title">请选择收货地址</div>
+                    <?php if($addresses) { ?>
+                    <?php foreach($addresses as $key => $address) { ?>
+                        <div class="weui-cells weui-cells_radio">
+                            <label class="weui-cell weui-check__label" for="x<?php echo $address->id; ?>">
+                                <div class="weui-cell__bd">
+                                    <p><?php echo $address->address; ?></p>
+                                    <p><?php echo $address->name; ?></p>
+                                    <p><?php echo $address->phone; ?></p>
+                                </div>
+                                <div class="weui-cell__ft">
+                                    <input type="radio" class="weui-check" <?php if($key==0) echo 'checked="checked"';?> name="radio1" id="x<?php echo $address->id; ?>">
+                                    <span class="weui-icon-checked"></span>
+                                </div>
+                            </label>
+                        </div>
+                    <?php } ?>
+                    <?php } ?>
+                        <div class="weui-btn-area" style="<?php if(!$addresses) echo 'display:none;';?>">
+                            <a class="weui-btn weui-btn_primary" href="javascript:" id="choose_address_btn">确定</a>
+                        </div>
+                    <div class="weui-btn-area">
+                        <a class="weui-btn weui-btn_default" href="javascript:" id="add_address_btn">新增收货地址</a>
+                    </div>
+                </div>
+                <div id="tab4" class="weui-tab__bd-item">
+                    <header class='demos-header'>
+                        <h1 class="demos-title">新增收货地址</h1>
+                    </header>
+                    <div class="weui-cells weui-cells_form">
+                        <div class="weui-cell">
+                            <div class="weui-cell__hd">
+                                <label class="weui-label">地址</label>
+                            </div>
+                            <div class="weui-cell__bd">
+                                <textarea class="weui-textarea" id="address_input" placeholder="请输入收件地址" rows="3"></textarea>
+                            </div>
+                        </div>
+                        <div class="weui-cell">
+                            <div class="weui-cell__hd"><label class="weui-label">姓名</label></div>
+                            <div class="weui-cell__bd">
+                                <input id="name_input" class="weui-input" placeholder="请输入收件人姓名">
+                            </div>
+                        </div>
+                        <div class="weui-cell">
+                            <div class="weui-cell__hd"><label class="weui-label">电话</label></div>
+                            <div class="weui-cell__bd">
+                                <input id="phone_input" class="weui-input" type="tel" placeholder="请输入收件人电话">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="weui-btn-area">
+                        <a class="weui-btn weui-btn_primary" href="javascript:" id="add_address_confirm_btn">确定</a>
+                        <a class="weui-btn weui-btn_default" href="javascript:" id="add_address_cancel_btn">取消</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="weui-tabbar">
+                <a href="<?php echo base_url(); ?>" class="weui-tabbar__item">
+                    <div class="weui-tabbar__icon">
+                        <img src="<?php echo base_url('images/icon_nav_button.png'); ?>" alt="">
+                    </div>
+                    <p class="weui-tabbar__label">首页</p>
+                </a>
+                <a href="<?php echo base_url('home/cart'); ?>" class="weui-tabbar__item weui-bar__item-on">
+                    <div class="weui-tabbar__icon">
+                        <img src="<?php echo base_url('images/icon_nav_msg.png'); ?>" alt="">
+                    </div>
+                    <p class="weui-tabbar__label">购物车</p>
+                </a>
+                <a href="<?php echo base_url('home/news'); ?>" class="weui-tabbar__item">
+                    <span class="weui-badge" style="position: absolute;top: -.4em;right: 1em;">1</span>
+                    <div class="weui-tabbar__icon">
+                        <img src="<?php echo base_url('images/icon_nav_article.png'); ?>" alt="">
+                    </div>
+                    <p class="weui-tabbar__label">通知</p>
+                </a>
+                <a href="<?php echo base_url('user/index'); ?>" class="weui-tabbar__item">
+                    <div class="weui-tabbar__icon">
+                        <img src="<?php echo base_url('images/icon_nav_cell.png'); ?>" alt="">
+                    </div>
+                    <p class="weui-tabbar__label">账户</p>
+                </a>
+            </div>
+        </div>
+
+        <script src="../lib/jquery-2.1.4.js"></script>
+        <script src="../lib/fastclick.js"></script>
+        <script>
+            $(function() {
+                FastClick.attach(document.body);
+            });
+        </script>
+        <script src="../js/jquery-weui.js"></script>
+        <script src="../js/swiper.js"></script>
+        <script>
+            $("#order_btn").bind("click", function() {
+                var amount = $("#amount_span").text();
+                amount = parseInt(amount);
+
+                var s11_input = $("#s11_input").val();
+                var s12_input = $("#s12_input").val();
+                var address_id = $("input:radio[name='radio1']:checked").eq(0).attr("id");
+
+                var cash_amount = $("#cash_amount_span").text();
+                cash_amount = parseFloat(cash_amount);
+
+                if(amount<=0) {
+                    $.toptip("订单总金额必须大于0");
+                }else if(amount%6000!==0) {
+                    $.toptip("订单总金额必须为6000的整数倍");
+                }else if(amount > cash_amount) {
+                    $.toptip("资金余额不足，请先充值");
+                }else {
+                    $.ajax ({
+                        url: "<?php echo base_url('api/v1/order/add'); ?>",
+                        type: "POST",
+                        data: {'num1':s11_input, 'num2':s12_input, 'address_id':address_id},
+                        success: function(data) {
+                            if(data>=1) {
+                                window.location.href="<?php echo base_url('order/success/');?>"+data;
+                            }else if(data == -2) {
+                                $.toptip("订单金额不对");
+                            }else if(data == -3) {
+                                $.toptip("资金余额不足");
+                            }
+                        }
+                    });
+
+                }
+            });
+            //数量输入，加减号
+            $("#s11").bind("click", function() {
+                var amount = $("#amount_span").text();
+                amount = parseInt(amount);
+                if($("#s11").is(":checked")) {
+                    $("#s11_div").show();
+                    $("#s11_input").val(1);
+                    $("#amount_span").text(amount+1500);
+                }else {
+                    $("#s11_input").val(0);
+                    $("#s11_div").hide();
+                    $("#amount_span").text(amount-1500*$("#s11_input").val());
+                }
+            });
+            $("#s12").bind("click", function() {
+                var amount = $("#amount_span").text();
+                amount = parseInt(amount);
+                if($("#s12").is(":checked")) {
+                    $("#s12_div").show();
+                    $("#s12_input").val(1);
+                    $("#amount_span").text(amount+2000);
+                }else {
+                    $("#s12_input").val(2);
+                    $("#s12_div").hide();
+                    $("#amount_span").text(amount-2000*$("#s12_input").val());
+                }
+            });
+            $(".btnMinus").bind("click", function() {
+                var num = $(this).next().val();
+                num--;
+                if(num >= 1) {
+                    $(this).next().val(num);
+                    var amount = $("#amount_span").text();
+                    amount = parseInt(amount);
+                    if($(this).next().attr("id")=="s11_input") {
+                        $("#amount_span").text(amount-1500);
+                    }else if($(this).next().attr("id")=="s12_input") {
+                        $("#amount_span").text(amount-2000);
+                    }
+                }
+            });
+            $(".btnPlus").bind("click", function() {
+                var num = $(this).prev().val();
+                $(this).prev().val(++num);
+                var amount = $("#amount_span").text();
+                amount = parseInt(amount);
+                if($(this).prev().attr("id")=="s11_input") {
+                    $("#amount_span").text(amount+1500);
+                }else if($(this).prev().attr("id")=="s12_input") {
+                    $("#amount_span").text(amount+2000);
+                }
+            });
+            //选择地址确定按钮
+            $("#choose_address_btn").bind("click", function() {
+                var address_html = $("input:radio[name='radio1']:checked").parent().prev().html();
+                $("#tab2").find(".weui-cell__ft").eq(0).html(address_html);
+                $("#tab3").removeClass("weui-tab__bd-item--active");
+                $("#tab2").addClass("weui-tab__bd-item--active");
+            });
+            $("#choose_address_a").bind("click", function() {
+                $("#tab2").removeClass("weui-tab__bd-item--active");
+                $("#tab3").addClass("weui-tab__bd-item--active");
+            });
+            $("#add_address_btn").bind("click", function() {
+                $("#tab3").removeClass("weui-tab__bd-item--active");
+                $("#tab4").addClass("weui-tab__bd-item--active");
+            });
+            $("#add_address_cancel_btn").bind("click", function() {
+                $("#tab4").removeClass("weui-tab__bd-item--active");
+                $("#tab3").addClass("weui-tab__bd-item--active");
+            });
+            //添加地址确定按钮
+            $("#add_address_confirm_btn").bind("click", function() {
+                var address = $("#address_input").val();
+                var name = $("#name_input").val();
+                var phone = $("#phone_input").val();
+
+                if(!address) {
+                    $.toptip("请输入收件人地址");
+                }else if(!name) {
+                    $.toptip("请输入收件人姓名");
+                }else if(!phone) {
+                    $.toptip("请输入收件人电话");
+                }else {
+                    $.ajax({
+                        url:"../api/v1/address/add",
+                        type:"POST",
+                        data: {'address':address,'name':name,'phone':phone},
+                        success: function(data) {
+                            if(data>=1) {
+                                $.toptip("新增收货地址成功","success");
+
+                                //在地址列表中显示地址
+                                var temple = '<div class="weui-cells weui-cells_radio">' +
+                                    '<label class="weui-cell weui-check__label" for="x' + data +'">' +
+                                        '<div class="weui-cell__bd">' +
+                                            '<p>' + address + '</p>' +
+                                            '<p>' + name + '</p>' +
+                                            '<p>' + phone + '</p>' +
+                                        '</div>' +
+                                        '<div class="weui-cell__ft">' +
+                                            '<input type="radio" class="weui-check" name="radio1" id="x' + data + '">' +
+                                            '<span class="weui-icon-checked"></span>' +
+                                        '</div>' +
+                                    '</label>' +
+                                '</div>';
+                                var tmp = document.createElement("div");
+                                tmp.innerHTML = temple;
+                                var ff = $("#tab3").find(".weui-cells__title")[0];
+                                ff.after(tmp);
+
+                                //改变选中状态
+                                $("input:radio[name='radio1']").eq(0).attr("checked",true);
+
+
+
+                                //显示地址列表
+                                $("#tab4").removeClass("weui-tab__bd-item--active");
+                                $("#tab3").addClass("weui-tab__bd-item--active");
+
+                                //显示确定按钮
+                                $("#choose_address_btn").parent().show();
+                            }
+                        }
+                    })
+                }
+            });
+
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>美力泉</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="description" content="美力泉">
+        <link rel="stylesheet" href="<?php echo base_url('lib/weui.min.css'); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('css/jquery-weui.css'); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('css/demos.css'); ?>">
+    </head>
+
+    <body ontouchstart>
+        <div class="weui-tab">
+            <div class="weui-tab__bd">
+                <div id="tab1" class="weui-tab__bd-item">
+                </div>
+                <div id="tab2" class="weui-tab__bd-item">
+                </div>
+                <div id="tab3" class="weui-tab__bd-item">
+                </div>
+
+                <div id="tab4" class="weui-tab__bd-item weui-tab__bd-item--active">
+                    <div class="page__bd">
+                        <div class="weui-panel">
+                            <div class="weui-panel__hd">
+                                <?php echo $user_level_arr[$user_detail->level]; ?>
+                                <?php echo substr($user->phone, 0,3)."****".substr($user->phone, 7, 4); ?>，
+                                平台id：<?php echo $user->id;?>
+                            </div>
+                            <div class="weui-panel__hd">
+                                订单数量：<?php echo $user_detail->order_num;?>，
+                                订单总金额：<?php echo $user_detail->order_sum;?>
+                            </div>
+                            <div class="weui-panel__hd">
+                                团队业绩：<?php echo $user_detail->team_sum;?>，
+                                直推消费会员数量：<?php echo $user_detail->consumer_num;?>，
+                                代理商线数：<?php echo $user_detail->agent_lines;?>
+                            </div>
+                            <div class="weui-panel__hd">
+                                直推会员：
+                            </div>
+                            <div class="weui-panel__bd">
+                                <div class="weui-media-box weui-media-box_small-appmsg">
+                                    <div class="weui-cells">
+                                        <?php foreach($childs as $child) { ?>
+                                        <a class="weui-cell weui-cell_access" href="<?php echo base_url('user/detail/'.$child->id); ?>">
+                                            <div class="weui-cell__hd"><img src="<?php echo base_url('images/icon_blank.png'); ?>" alt="" style="width:20px;margin-right:5px;display:block"></div>
+                                            <div class="weui-cell__bd weui-cell_primary">
+                                                <p><?php echo substr($child->phone, 0, 3)."****".substr($child->phone, 7,4); ?></p>
+                                            </div>
+                                            <span class="weui-cell__ft">
+                                                级别：<?php echo $user_level_arr[$child->level]; ?>
+                                            </span>
+                                        </a>
+                                        <?php } ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <?php $this->load->view('Common/tabbar.html'); ?>
+        </div>
+
+        <script src="<?php echo base_url('lib/jquery-2.1.4.js'); ?>"></script>
+        <script src="<?php echo base_url('lib/fastclick.js'); ?>"></script>
+        <script>
+            $(function() {
+                FastClick.attach(document.body);
+            });
+        </script>
+        <script src="<?php echo base_url('js/jquery-weui.js'); ?>"></script>
+    </body>
+</html>

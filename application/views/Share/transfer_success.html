@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>股金转让成功</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="description" content="">
+        <link rel="stylesheet" href="<?php echo base_url('lib/weui.min.css'); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('css/jquery-weui.css'); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('css/demos.css'); ?>">
+    </head>
+
+    <body ontouchstart>
+        <div class="weui-msg">
+            <div class="weui-msg__icon-area"><i class="weui-icon-success weui-icon_msg"></i></div>
+            <div class="weui-msg__text-area">
+                <h2 class="weui-msg__title">股金转让成功</h2>
+                <!--
+                    <p class="weui-msg__desc">内容详情，可根据实际需要安排，如果换行则不超过规定长度，居中展现<a href="javascript:void(0);">文字链接</a></p>
+                -->
+            </div>
+            <div class="weui-msg__opr-area">
+                <p class="weui-btn-area">
+                <a href="<?php echo base_url('user/index'); ?>" class="weui-btn weui-btn_primary">个人中心</a>
+                <a href="<?php echo base_url('share/transfer'); ?>" class="weui-btn weui-btn_default">继续股金转账</a>
+                </p>
+            </div>
+            <div class="weui-msg__extra-area">
+                <div class="weui-footer">
+                    <p class="weui-footer__links">
+                    <a href="javascript:void(0);" class="weui-footer__link">美力泉</a>
+                    </p>
+                    <p class="weui-footer__text">Copyright © 2016-2017</p>
+                </div>
+            </div>
+        </div>
+        <script src="<?php echo base_url('lib/jquery-2.1.4.js'); ?>"></script>
+        <script src="<?php echo base_url('lib/fastclick.js'); ?>"></script>
+        <script>
+            $(function() {
+                FastClick.attach(document.body);
+            });
+        </script>
+        <script src="<?php echo base_url('js/jquery-weui.js'); ?>"></script>
+
+    </body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>美力泉-股金转账</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="description" content="">
+        <link rel="stylesheet" href="<?php echo base_url('lib/weui.min.css'); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('css/jquery-weui.css'); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('css/demos.css'); ?>">
+    </head>
+
+    <body ontouchstart>
+        <header class='demos-header'>
+            <h1 class="demos-title">股金转账</h1>
+        </header>
+        <div class="weui-cells__title" value="<?php echo $user_detail->share_free; ?>">我的可用股金数量：<span id="share_free_span"><?php echo $user_detail->share_free; ?></span></div>
+        <div class="weui-cells weui-cells_form">
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">对方平台ID</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" id="to_user_id" pattern="[0-9]*" placeholder="请输入对方平台ID">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">对方手机号</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" id="to_phone" pattern="[0-9]*" placeholder="请输入对方手机号">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">转账数量</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" id="share_num" pattern="[0-9]*" placeholder="请输入股金转账数量">
+                </div>
+            </div>
+        </div>
+
+        <label for="agreement" class="weui-agree">
+            <input id="agreement" type="checkbox" class="weui-agree__checkbox">
+            <span class="weui-agree__text">
+                阅读并同意<a href="javascript:void(0);">《股金转让协议》</a>
+            </span>
+        </label>
+
+        <div class="weui-btn-area">
+            <a class="weui-btn weui-btn_primary" href="javascript:" id="share_transfer_btn">确定</a>
+        </div>
+
+        <?php $this->load->view('Common/tabbar.html'); ?>
+
+        <script src="<?php echo base_url('lib/jquery-2.1.4.js'); ?>"></script>
+        <script src="<?php echo base_url('lib/fastclick.js'); ?>"></script>
+        <script>
+            $(function() {
+                FastClick.attach(document.body);
+            });
+        </script>
+        <script src="<?php echo base_url('js/jquery-weui.js'); ?>"></script>
+        <script>
+            $("#share_transfer_btn").bind("click", function() {
+                var to_user_id = $("#to_user_id").val();
+                var to_phone = $("#to_phone").val();
+                var share_num  = $("#share_num").val();
+                share_num = parseInt(share_num);
+                var share_num_cur = '<?php echo $user_detail->share_free; ?>';
+                share_num_cur = parseInt(share_num_cur);
+                var agreement = $("#agreement").is(":checked");
+
+                if(!to_user_id) {
+                    $.toptip("请输入对方平台ID");
+                }else if(!to_phone) {
+                    $.toptip("请输入对方手机号");
+                }else if(!share_num) {
+                    $.toptip("请输入转账数量");
+                }else if(share_num > share_num_cur) {
+                    $.toptip("可用股金数量不够");
+                }else if(!agreement) {
+                    $.toptip("请同意股金转账协议");
+                }else {
+                    $.ajax({
+                        url: '<?php echo base_url("api/v1/share/transfer"); ?>',
+                        type: "POST",
+                        data: {'to_user_id':to_user_id,'to_phone':to_phone, 'share_num':share_num},
+                        success: function(data) {
+                            if(data==1) {
+                                window.location.href="<?php echo base_url().'share/transfer_success';?>";
+                            }else {
+                                $.toptip("股金转账失败");
+                            }
+                        }
+                    });
+                }
+
+            });
+        </script>
+
+    </body>
+</html>

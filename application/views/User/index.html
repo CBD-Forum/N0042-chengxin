@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>美力泉</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="description" content="美力泉">
+        <link rel="stylesheet" href="../lib/weui.min.css">
+        <link rel="stylesheet" href="../css/jquery-weui.css">
+        <link rel="stylesheet" href="../css/demos.css">
+    </head>
+
+    <body ontouchstart>
+        <div class="weui-tab">
+            <div class="weui-tab__bd">
+                <div id="tab1" class="weui-tab__bd-item">
+                    <div class="swiper-container">
+                        <!-- Additional required wrapper -->
+                        <div class="swiper-wrapper">
+                            <!-- Slides -->
+                            <div class="swiper-slide"><img src="../images/swiper-1.jpg" /></div>
+                            <div class="swiper-slide"><img src="../images/swiper-2.jpg" /></div>
+                            <div class="swiper-slide"><img src="../images/swiper-3.jpg" /></div>
+                        </div>
+                        <!-- If we need pagination -->
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+                <div id="tab2" class="weui-tab__bd-item">
+                </div>
+                <div id="tab3" class="weui-tab__bd-item">
+                </div>
+
+                <div id="tab4" class="weui-tab__bd-item weui-tab__bd-item--active">
+
+                    <div class="page__bd">
+                        <div class="weui-panel">
+                            <div class="weui-panel__hd">你好，<?php echo substr($user->phone, 0,3)."****".substr($user->phone, 7, 4); ?>，平台id：<?php echo $user->id;?></div>
+                            <div class="weui-panel__bd">
+                                <div class="weui-media-box weui-media-box_small-appmsg">
+                                    <div class="weui-cells">
+                                        <a class="weui-cell weui-cell_access" href="<?php echo base_url('order/index'); ?>">
+                                            <div class="weui-cell__hd"><img src="../images/icon_blank.png" alt="" style="width:20px;margin-right:5px;display:block"></div>
+                                            <div class="weui-cell__bd weui-cell_primary">
+                                                <p>我的订单</p>
+                                            </div>
+                                            <span class="weui-cell__ft">
+                                                <p>订单总金额：<?php echo $user_detail->order_sum; ?></p>
+                                                <p>订单数：<?php echo $user_detail->order_num;?></p>
+                                            </span>
+                                        </a>
+
+                                        <a class="weui-cell weui-cell_access" href="<?php echo base_url('user/detail/'.$user->id); ?>">
+                                            <div class="weui-cell__hd"><img src="../images/icon_blank.png" alt="" style="width:20px;margin-right:5px;display:block"></div>
+                                            <div class="weui-cell__bd weui-cell_primary">
+                                                <p>我的团队</p>
+                                            </div>
+                                            <span class="weui-cell__ft">我的级别：<?php echo $user_level_arr[$user_detail->level]; ?></span>
+                                        </a>
+
+                                        <a class="weui-cell weui-cell_access" href="javascript:;">
+                                            <div class="weui-cell__hd"><img src="../images/icon_blank.png" alt="" style="width:20px;margin-right:5px;display:block"></div>
+                                            <div class="weui-cell__bd weui-cell_primary">
+                                                <p>我的奖励</p>
+                                            </div>
+                                            <span class="weui-cell__ft"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="weui-panel__hd">股金账户</div>
+                            <div class="weui-panel__bd">
+                                <div class="weui-media-box weui-media-box_small-appmsg">
+                                    <div class="weui-cells">
+                                        <a class="weui-cell weui-cell_access" href="<?php echo base_url('share/record'); ?>">
+                                            <div class="weui-cell__hd"><img src="../images/icon_blank.png" alt="" style="width:20px;margin-right:5px;display:block"></div>
+                                            <div class="weui-cell__bd weui-cell_primary">
+                                                <p>股金流水</p>
+                                            </div>
+                                            <span class="weui-cell__ft">
+                                                <p>可用股金：<?php echo $user_detail->share_free; ?></p>
+                                                <p>冻结股金：<?php echo $user_detail->share_frozen; ?></p>
+                                            </span>
+                                        </a>
+                                        <a class="weui-cell weui-cell_access" href="<?php echo base_url('share/transfer'); ?>">
+                                            <div class="weui-cell__hd"><img src="../images/icon_blank.png" alt="" style="width:20px;margin-right:5px;display:block"></div>
+                                            <div class="weui-cell__bd weui-cell_primary">
+                                                <p>股金转账</p>
+                                            </div>
+                                            <span class="weui-cell__ft"></span>
+                                        </a>
+                                        <a class="weui-cell weui-cell_access" href="javascript:;">
+                                            <div class="weui-cell__hd"><img src="../images/icon_blank.png" alt="" style="width:20px;margin-right:5px;display:block"></div>
+                                            <div class="weui-cell__bd weui-cell_primary">
+                                                <p>兑换产品</p>
+                                            </div>
+                                            <span class="weui-cell__ft"></span>
+                                        </a>
+                                        <a class="weui-cell weui-cell_access" href="<?php echo base_url('share/buy'); ?>">
+                                            <div class="weui-cell__hd"><img src="../images/icon_blank.png" alt="" style="width:20px;margin-right:5px;display:block"></div>
+                                            <div class="weui-cell__bd weui-cell_primary">
+                                                <p>购买股金</p>
+                                            </div>
+                                            <span class="weui-cell__ft"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="weui-panel__hd">股权账户</div>
+                            <div class="weui-panel__bd">
+                                <div class="weui-media-box weui-media-box_small-appmsg">
+                                    <div class="weui-cells">
+                                        <a class="weui-cell weui-cell_access" href="<?php echo base_url('stock/buy'); ?>">
+                                            <div class="weui-cell__hd"><img src="../images/icon_blank.png" alt="" style="width:20px;margin-right:5px;display:block"></div>
+                                            <div class="weui-cell__bd weui-cell_primary">
+                                                <p>股权申购</p>
+                                            </div>
+                                            <span class="weui-cell__ft">
+                                                <p>股权数量：<?php echo $user_detail->stock_num; ?></p>
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="weui-panel__hd">资金账户</div>
+                            <div class="weui-panel__bd">
+                                <div class="weui-media-box weui-media-box_small-appmsg">
+                                    <div class="weui-cells">
+                                        <a class="weui-cell weui-cell_access" href="<?php echo base_url('cash/withdraw'); ?>">
+                                            <div class="weui-cell__hd"><img src="../images/icon_blank.png" alt="" style="width:20px;margin-right:5px;display:block"></div>
+                                            <div class="weui-cell__bd weui-cell_primary">
+                                                <p>提现申请</p>
+                                            </div>
+                                            <span class="weui-cell__ft">可用余额：<?php echo $user_detail->cash_amount; ?></span>
+                                        </a>
+                                        <a class="weui-cell weui-cell_access" href="<?php echo base_url('cash/recharge'); ?>">
+                                            <div class="weui-cell__hd"><img src="../images/icon_blank.png" alt="" style="width:20px;margin-right:5px;display:block"></div>
+                                            <div class="weui-cell__bd weui-cell_primary">
+                                                <p>资金充值</p>
+                                            </div>
+                                            <span class="weui-cell__ft"></span>
+                                        </a>
+                                        <a class="weui-cell weui-cell_access" href="<?php echo base_url('cash/transfer'); ?>">
+                                            <div class="weui-cell__hd"><img src="../images/icon_blank.png" alt="" style="width:20px;margin-right:5px;display:block"></div>
+                                            <div class="weui-cell__bd weui-cell_primary">
+                                                <p>资金转账</p>
+                                            </div>
+                                            <span class="weui-cell__ft"></span>
+                                        </a>
+                                        <a class="weui-cell weui-cell_access" href="<?php echo base_url('cash/record'); ?>">
+                                            <div class="weui-cell__hd"><img src="../images/icon_blank.png" alt="" style="width:20px;margin-right:5px;display:block"></div>
+                                            <div class="weui-cell__bd weui-cell_primary">
+                                                <p>资金流水</p>
+                                            </div>
+                                            <span class="weui-cell__ft"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="weui-panel__hd">账户安全</div>
+                            <div class="weui-panel__bd">
+                                <div class="weui-media-box weui-media-box_small-appmsg">
+                                    <div class="weui-cells">
+                                        <a class="weui-cell weui-cell_access" href="javascript:;">
+                                            <div class="weui-cell__hd"><img src="../images/icon_blank.png" alt="" style="width:20px;margin-right:5px;display:block"></div>
+                                            <div class="weui-cell__bd weui-cell_primary">
+                                                <p>修改登录密码</p>
+                                            </div>
+                                            <span class="weui-cell__ft"></span>
+                                        </a>
+                                        <a class="weui-cell weui-cell_access" href="javascript:;">
+                                            <div class="weui-cell__hd"><img src="../images/icon_blank.png" alt="" style="width:20px;margin-right:5px;display:block"></div>
+                                            <div class="weui-cell__bd weui-cell_primary">
+                                                <p>修改资金密码</p>
+                                            </div>
+                                            <span class="weui-cell__ft"></span>
+                                        </a>
+                                        <a class="weui-cell weui-cell_access" href="javascript:;">
+                                            <div class="weui-cell__hd"><img src="../images/icon_blank.png" alt="" style="width:20px;margin-right:5px;display:block"></div>
+                                            <div class="weui-cell__bd weui-cell_primary">
+                                                <p>实名认证</p>
+                                            </div>
+                                            <span class="weui-cell__ft"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div style="margin:30px auto 50px auto;width:60%;">
+                        <a href="logout" class="weui-btn weui-btn_default">退出登录</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="weui-tabbar">
+                <a href="<?php echo base_url(); ?>" class="weui-tabbar__item">
+                    <div class="weui-tabbar__icon">
+                        <img src="<?php echo base_url('images/icon_nav_button.png'); ?>" alt="">
+                    </div>
+                    <p class="weui-tabbar__label">首页</p>
+                </a>
+                <a href="<?php echo base_url('home/cart'); ?>" class="weui-tabbar__item">
+                    <div class="weui-tabbar__icon">
+                        <img src="<?php echo base_url('images/icon_nav_msg.png'); ?>" alt="">
+                    </div>
+                    <p class="weui-tabbar__label">购物车</p>
+                </a>
+                <a href="<?php echo base_url('home/news'); ?>" class="weui-tabbar__item">
+                    <span class="weui-badge" style="position: absolute;top: -.4em;right: 1em;">1</span>
+                    <div class="weui-tabbar__icon">
+                        <img src="<?php echo base_url('images/icon_nav_article.png'); ?>" alt="">
+                    </div>
+                    <p class="weui-tabbar__label">通知</p>
+                </a>
+                <a href="<?php echo base_url('user/index'); ?>" class="weui-tabbar__item weui-bar__item-on">
+                    <div class="weui-tabbar__icon">
+                        <img src="<?php echo base_url('images/icon_nav_cell.png'); ?>" alt="">
+                    </div>
+                    <p class="weui-tabbar__label">账户</p>
+                </a>
+            </div>
+        </div>
+
+        <script src="../lib/jquery-2.1.4.js"></script>
+        <script src="../lib/fastclick.js"></script>
+        <script>
+            $(function() {
+                FastClick.attach(document.body);
+            });
+        </script>
+        <script src="../js/jquery-weui.js"></script>
+        <script src="../js/swiper.js"></script>
+        <script>
+            $(".swiper-container").swiper({
+                loop: true,
+                autoplay: 3000
+            });
+        </script>
+    </body>
+</html>

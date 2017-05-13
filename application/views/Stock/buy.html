@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>美力泉-股权申购</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="description" content="">
+        <link rel="stylesheet" href="<?php echo base_url('lib/weui.min.css'); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('css/jquery-weui.css'); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('css/demos.css'); ?>">
+    </head>
+
+    <body ontouchstart>
+        <header class='demos-header'>
+            <h1 class="demos-title">股权申购</h1>
+        </header>
+        <div class="weui-cells__title">剩余可申购数量：<?php echo $stock_num_allow; ?></div>
+        <div class="weui-cells__title">我的股权数量：<?php echo $user_detail->stock_num; ?></div>
+        <div class="weui-cells__title" value="<?php echo $user_detail->share_free; ?>">我的可用股金数量：<span id="share_free_span"><?php echo $user_detail->share_free; ?></span></div>
+        <div class="weui-cells weui-cells_form">
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">申购数量</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" id="stock_num_input" pattern="[0-9]*" placeholder="请输入10000的整数倍">
+                </div>
+            </div>
+        </div>
+
+        <label for="agreement" class="weui-agree">
+            <input id="agreement" type="checkbox" class="weui-agree__checkbox">
+            <span class="weui-agree__text">
+                阅读并同意<a href="javascript:void(0);">《股权申购协议》</a>
+            </span>
+        </label>
+
+        <div class="weui-btn-area">
+            <a class="weui-btn weui-btn_primary" href="javascript:" id="stock_buy_btn">申购</a>
+            <a class="weui-btn weui-btn_default" href="<?php echo base_url('stock/buy_list'); ?>">申购记录</a>
+        </div>
+
+        <?php $this->load->view('Common/tabbar.html'); ?>
+
+        <script src="<?php echo base_url('lib/jquery-2.1.4.js'); ?>"></script>
+        <script src="<?php echo base_url('lib/fastclick.js'); ?>"></script>
+        <script>
+            $(function() {
+                FastClick.attach(document.body);
+            });
+        </script>
+        <script src="<?php echo base_url('js/jquery-weui.js'); ?>"></script>
+        <script>
+            $("#stock_buy_btn").bind("click", function() {
+                var stock_num = $("#stock_num_input").val();
+                stock_num = parseInt(stock_num);
+                var agreement = $("#agreement").is(":checked");
+                var share_free = $("#share_free_span").text();
+                share_free = parseInt(share_free);
+
+                if(stock_num > share_free) {
+                    $.toptip("可用股金数量不够");
+                }else if(!stock_num) {
+                    $.toptip("请输入申购数量");
+                }else if(!agreement) {
+                    $.toptip("请同意股权申购协议");
+                }else if(stock_num % 10000 != 0) {
+                    $.toptip("申购数量必须为10000的整数倍");
+                }else {
+                    $.ajax({
+                        url: '<?php echo base_url("api/v1/stock/buy"); ?>',
+                        type: "POST",
+                        data: {'stock_num':stock_num},
+                        success: function(data) {
+                            if(data==1) {
+                                window.location.href="<?php echo base_url().'stock/success';?>";
+                            }else {
+                                $.toptip("股权申购失败");
+                            }
+                        }
+                    });
+                }
+
+            });
+        </script>
+
+    </body>
+</html>

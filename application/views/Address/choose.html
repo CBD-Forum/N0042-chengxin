@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>美力泉</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="description" content="美力泉">
+        <link rel="stylesheet" href="../lib/weui.min.css">
+        <link rel="stylesheet" href="../css/jquery-weui.css">
+        <link rel="stylesheet" href="../css/demos.css">
+    </head>
+
+    <body ontouchstart>
+        <div class="weui-tab">
+            <div class="weui-tab__bd">
+                <div id="tab1" class="weui-tab__bd-item">
+                </div>
+                <div id="tab2" class="weui-tab__bd-item weui-tab__bd-item--active">
+                    <div class="weui-cells__title">请选择收货地址</div>
+                    <div class="weui-cells weui-cells_radio">
+                        <label class="weui-cell weui-check__label" for="x11">
+                            <div class="weui-cell__bd">
+                            <p>hz知识杭州市西湖区黄龙万科中心G做文峰区，增加以下长度,</p>
+                            <p>赵冲，</p>
+                            <p>23822043855，</p>
+                            </div>
+                            <div class="weui-cell__ft">
+                                <input type="radio" class="weui-check" name="radio1" id="x11">
+                                <span class="weui-icon-checked"></span>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="weui-cells weui-cells_radio">
+                        <label class="weui-cell weui-check__label" for="x12">
+                            <div class="weui-cell__bd">
+                            <p>hz知识杭州市西湖区黄龙万科中心G做文峰区，增加以下长度,</p>
+                            <p>赵冲，</p>
+                            <p>23822043855，</p>
+                            </div>
+                            <div class="weui-cell__ft">
+                                <input type="radio" class="weui-check" name="radio1" id="x12">
+                                <span class="weui-icon-checked"></span>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="weui-btn-area">
+                        <a class="weui-btn weui-btn_primary" href="javascript:" id="showTooltips">确定</a>
+                    </div>
+                    <div class="weui-btn-area">
+                        <a class="weui-btn weui-btn_default" href="javascript:" id="showTooltips">新增收货地址</a>
+                    </div>
+
+                </div>
+                <div id="tab3" class="weui-tab__bd-item">
+                </div>
+                <div id="tab4" class="weui-tab__bd-item ">
+                </div>
+            </div>
+
+            <div class="weui-tabbar">
+                <a href="<?php echo base_url(); ?>" class="weui-tabbar__item">
+                    <div class="weui-tabbar__icon">
+                        <img src="<?php echo base_url('images/icon_nav_button.png'); ?>" alt="">
+                    </div>
+                    <p class="weui-tabbar__label">首页</p>
+                </a>
+                <a href="<?php echo base_url('home/cart'); ?>" class="weui-tabbar__item weui-bar__item-on">
+                    <div class="weui-tabbar__icon">
+                        <img src="<?php echo base_url('images/icon_nav_msg.png'); ?>" alt="">
+                    </div>
+                    <p class="weui-tabbar__label">购物车</p>
+                </a>
+                <a href="<?php echo base_url('home/news'); ?>" class="weui-tabbar__item">
+                    <span class="weui-badge" style="position: absolute;top: -.4em;right: 1em;">1</span>
+                    <div class="weui-tabbar__icon">
+                        <img src="<?php echo base_url('images/icon_nav_article.png'); ?>" alt="">
+                    </div>
+                    <p class="weui-tabbar__label">通知</p>
+                </a>
+                <a href="<?php echo base_url('user/index'); ?>" class="weui-tabbar__item">
+                    <div class="weui-tabbar__icon">
+                        <img src="<?php echo base_url('images/icon_nav_cell.png'); ?>" alt="">
+                    </div>
+                    <p class="weui-tabbar__label">账户</p>
+                </a>
+            </div>
+        </div>
+
+        <script src="../lib/jquery-2.1.4.js"></script>
+        <script src="../lib/fastclick.js"></script>
+        <script>
+            $(function() {
+                FastClick.attach(document.body);
+            });
+        </script>
+        <script src="../js/jquery-weui.js"></script>
+        <script src="../js/swiper.js"></script>
+        <script>
+            $(".swiper-container").swiper({
+                loop: true,
+                autoplay: 3000
+            });
+        </script>
+    </body>
+</html>

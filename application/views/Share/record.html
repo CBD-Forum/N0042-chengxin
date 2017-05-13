@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>股金流水</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="description" content="">
+        <link rel="stylesheet" href="<?php echo base_url('lib/weui.min.css'); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('css/jquery-weui.css'); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('css/demos.css'); ?>">
+    </head>
+
+    <body ontouchstart>
+        <div class="weui-tab">
+            <div class="weui-tab__bd">
+                <div id="tab1" class="weui-tab__bd-item">
+                </div>
+                <div id="tab2" class="weui-tab__bd-item ">
+                </div>
+                <div id="tab3" class="weui-tab__bd-item">
+                </div>
+                <div id="tab4" class="weui-tab__bd-item weui-tab__bd-item--active">
+                    <div class="weui-cells__title">股金流水</div>
+                    <div class="weui-cells">
+                        <?php foreach($records as $record) { ?>
+                        <div class="weui-cell">
+                            <div class="weui-cell__hd">
+                            </div>
+                            <div class="weui-cell__bd">
+                                <p><?php echo $record_type_arr[$record->type]; ?></p>
+                                <p><?php echo $record->num; ?></p>
+                            </div>
+                            <div class="weui-cell__ft">
+                                <?php echo Date("Y-m-d H:i:s", $record->created_at); ?>
+                            </div>
+                        </div>
+                        <?php } ?>
+                    </div>
+                </div>
+            </div>
+
+            <?php $this->load->view('Common/tabbar.html', array('active'=>4)); ?>
+        </div>
+
+        <script src="<?php echo base_url('lib/jquery-2.1.4.js'); ?>"></script>
+        <script src="<?php echo base_url('lib/fastclick.js'); ?>"></script>
+        <script>
+            $(function() {
+                FastClick.attach(document.body);
+            });
+        </script>
+        <script src="<?php echo base_url('js/jquery-weui.js'); ?>"></script>
+
+    </body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>美力泉-股金购买</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="description" content="">
+        <link rel="stylesheet" href="<?php echo base_url('lib/weui.min.css'); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('css/jquery-weui.css'); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('css/demos.css'); ?>">
+    </head>
+
+    <body ontouchstart>
+        <header class='demos-header'>
+            <h1 class="demos-title">股金购买</h1>
+        </header>
+        <div class="weui-cells weui-cells_form">
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">购买数量</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" id="num" pattern="[0-9]*" placeholder="请输入10000的整数倍">
+                </div>
+            </div>
+            <a href="javascript:void(0);" class="weui-cell weui-cell_link">
+                <div class="weui-cell__bd">需要资金：￥<span id="share_need">0</span>/<?php echo $user_detail->cash_amount; ?></div>
+            </a>
+        </div>
+
+        <label for="agreement" class="weui-agree">
+            <input id="agreement" type="checkbox" class="weui-agree__checkbox">
+            <span class="weui-agree__text">
+                阅读并同意<a href="javascript:void(0);">《股金购买协议》</a>
+            </span>
+        </label>
+
+        <div class="weui-btn-area">
+            <a class="weui-btn weui-btn_primary" href="javascript:" id="confirm_btn">购买</a>
+        </div>
+
+        <?php $this->load->view('Common/tabbar.html'); ?>
+
+        <script src="<?php echo base_url('lib/jquery-2.1.4.js'); ?>"></script>
+        <script src="<?php echo base_url('lib/fastclick.js'); ?>"></script>
+        <script>
+            $(function() {
+                FastClick.attach(document.body);
+            });
+        </script>
+        <script src="<?php echo base_url('js/jquery-weui.js'); ?>"></script>
+        <script>
+            $("#num").keyup(function() {
+                var num = $("#num").val();
+                num = parseInt(num);
+                if(!num) num = 0;
+                $("#share_need").text(num/10000*6300);
+            });
+            $("#confirm_btn").bind("click", function() {
+                var num = $("#num").val();
+                num = parseInt(num);
+                var agreement = $("#agreement").is(":checked");
+                share_free = '<?php echo $user_detail->cash_amount; ?>';
+                share_free = parseFloat(share_free);
+
+                if(num > share_free) {
+                    $.toptip("可用股金数量不够");
+                }else if(!num) {
+                    $.toptip("请输入购买数量");
+                }else if(num%10000!=0) {
+                    $.toptip("购买数量必须为10000的整数倍");
+                }else if(!agreement) {
+                    $.toptip("请同意股金购买协议");
+                }else {
+                    $.ajax({
+                        url: '<?php echo base_url("api/v1/share/buy"); ?>',
+                        type: "POST",
+                        data: {'num':num},
+                        success: function(data) {
+                            if(data==1) {
+                                window.location.href="<?php echo base_url().'share/buy_success';?>";
+                            }else {
+                                $.toptip("股金购买失败");
+                            }
+                        }
+                    });
+                }
+
+            });
+        </script>
+
+    </body>
+</html>

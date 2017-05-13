@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>美力泉</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+        <meta name="description" content="美力泉">
+
+        <link rel="stylesheet" href="../lib/weui.min.css">
+        <link rel="stylesheet" href="../css/jquery-weui.css">
+        <link rel="stylesheet" href="../css/demos.css">
+
+    </head>
+
+    <body ontouchstart>
+
+
+        <header class='demos-header'>
+            <h1 class="demos-title">注册</h1>
+        </header>
+
+        <div class="weui-cells__title">手机号</div>
+        <div class="weui-cells weui-cells_form">
+            <div class="weui-cell weui-cell_vcode">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">手机号</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input id="phone" class="weui-input" type="tel" placeholder="请输入手机号">
+                </div>
+                <div class="weui-cell__ft">
+                    <button class="weui-vcode-btn" id="vcode-btn">获取验证码</button>
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">验证码</label></div>
+                <div class="weui-cell__bd">
+                    <input id="vcode" class="weui-input" type="number" pattern="[0-9]*" placeholder="请输入验证码">
+                </div>
+            </div>
+        </div>
+        <div class="weui-cells__title">设置密码</div>
+        <div class="weui-cells weui-cells_form">
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">密码</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" id="password" type="password" placeholder="请输入密码">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">确认密码</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" id="repassword" type="password" placeholder="请再次输入密码">
+                </div>
+            </div>
+        </div>
+        <div class="weui-cells__title">推荐人</div>
+        <div class="weui-cells weui-cells_form">
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">手机号</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" id="parent" type="text" placeholder="请输入推荐人手机号，可不填">
+                </div>
+            </div>
+        </div>
+
+        <label for="agreement" class="weui-agree">
+            <input id="agreement" type="checkbox" class="weui-agree__checkbox">
+            <span class="weui-agree__text">
+                阅读并同意<a href="welcome/index">《用户协议》</a>
+            </span>
+        </label>
+
+        <div class="weui-btn-area">
+            <a class="weui-btn weui-btn_primary" id="register-btn" href="#">确定</a>
+            <a class="weui-btn weui-btn_default" href="login">已有账号，去登录</a>
+        </div>
+
+        <script src="../lib/jquery-2.1.4.js"></script>
+        <script src="../lib/fastclick.js"></script>
+        <script>
+            $(function() {
+                FastClick.attach(document.body);
+            });
+        </script>
+        <script src="../js/jquery-weui.js"></script>
+        <script src="../js/sha256.js"></script>
+        <script>
+            $("#vcode-btn").click(function() {
+                var phone = $("#phone").val();
+                if(!phone || !/1[3|4|5|7|8]\d{9}/.test(phone)) {
+                    $.toptip("请输入手机号");
+                }else {
+                    $.ajax({
+                        url:"../api/v1/vcode/generate",
+                        type:"POST",
+                        data:{'phone':phone},
+                        success: function(data) {
+                            if(data==1) {
+                                $.toptip("验证码发送成功","success");
+                            }else if(data==-1) {
+                                $.toptip("验证码已经发送");
+                            }else {
+                                $.toptip("验证码发送失败");
+                            }
+                        }
+                    });
+                }
+            });
+
+            $("#register-btn").click(function() {
+                var phone = $("#phone").val();
+                var vcode = $("#vcode").val();
+                var password = $("#password").val();
+                var repassword = $("#repassword").val();
+                var parent = $("#parent").val();
+                var agreement = $("#agreement").is(":checked");
+
+                if(!phone || !/1[3|4|5|7|8]\d{9}/.test(phone)) {
+                    $.toptip('请输入手机号');
+                }else if(!vcode || !/\d{6}/.test(vcode)) {
+                    $.toptip('请输入六位手机验证码');
+                }else if(!password) {
+                    $.toptip('请输入密码');
+                }else if(password!==repassword) {
+                    $.toptip('两次密码不一致');
+                }else if(!agreement) {
+                    $.toptip('请同意用户协议');
+                }else {
+                    $.ajax({
+                        url: "../api/v1/user/register",
+                        type: "POST",
+                        data: {'phone':phone,'vcode':vcode,'password':sha256_digest(password),'parent':parent},
+                        success: function(data) {
+                            if(data==1) {
+                                $.toptip("注册成功", "success");
+                                window.location.href="<?php echo base_url().'user/success';?>";
+                            }else if(data==-2) {
+                                $.toptip("验证码过期");
+                            }else if(data==-1) {
+                                $.toptip("验证码不正确");
+                            }else if(data==-3) {
+                                $.toptip("手机号已存在");
+                            }else {
+                                $.toptip("注册失败");
+                            }
+                        }
+                    });
+                }
+            });
+        </script>
+
+    </body>
+</html>

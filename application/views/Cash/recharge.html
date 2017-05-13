@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>美力泉</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+        <meta name="description" content="">
+
+        <link rel="stylesheet" href="../lib/weui.min.css">
+        <link rel="stylesheet" href="../css/jquery-weui.css">
+        <link rel="stylesheet" href="../css/demos.css">
+
+    </head>
+
+    <body ontouchstart>
+        <div class="weui-msg">
+            <div class="weui-msg__icon-area">
+                <img src="../images/cash_recharge.png" style="width:60%;"/>
+            </div>
+            <div class="weui-msg__text-area">
+                <h2 class="weui-msg__title">我的资金：<?php echo $user_detail->cash_amount; ?></h2>
+                <p class="weui-msg__desc">转账时，请在备注中写上您的平台ID:<?php echo $user->id; ?>，如果忘记，请联系客服</p>
+            </div>
+            <!--
+            <div class="weui-msg__opr-area">
+                <p class="weui-btn-area">
+                <a href="javascript:;" class="weui-btn weui-btn_primary">推荐操作</a>
+                <a href="javascript:;" class="weui-btn weui-btn_default">辅助操作</a>
+                </p>
+            </div>
+            -->
+            <div class="weui-msg__extra-area">
+                <div class="weui-footer">
+                    <p class="weui-footer__links">
+                    <a href="javascript:void(0);" class="weui-footer__link">美力泉</a>
+                    </p>
+                    <p class="weui-footer__text">Copyright © 2016-2017 </p>
+                </div>
+            </div>
+        </div>
+        <script src="../lib/jquery-2.1.4.js"></script>
+        <script src="../lib/fastclick.js"></script>
+        <script>
+            $(function() {
+                FastClick.attach(document.body);
+            });
+        </script>
+        <script src="../js/jquery-weui.js"></script>
+
+    </body>
+</html>
