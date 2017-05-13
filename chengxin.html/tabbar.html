@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>jQuery WeUI</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+    ">
+
+    <link rel="stylesheet" href="./lib/weui.min.css">
+    <link rel="stylesheet" href="./css/jquery-weui.css">
+    <link rel="stylesheet" href="css/demos.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/score.css">
+    <link rel="stylesheet" href="css/tax.css">
+    <link rel="stylesheet" href="css/user.css">
+
+
+    <style type="text/css">
+      .navbar{
+        width: 100%;
+        height: 49px;
+        background: black;
+      }
+      .navbar-word {
+        color: white;
+        font-size: 17px;
+        width: 40px;
+       
+        margin:5px auto;
+      }
+
+    </style>
+  </head>
+
+  <body ontouchstart>
+
+  
+    <div class="weui-tab">
+      <div class="weui-navbar">
+        <div class="navbar">
+          <div class="navbar-word" ><span>首页</span></div>
+        </div>
+         
+      </div>
+      <div class="weui-tab__bd">
+        <div id="tab1" class="weui-tab__bd-item weui-tab__bd-item--active">
+         <div class="swiper-container">
+      <!-- Additional required wrapper -->
+      <div class="swiper-wrapper">
+        <!-- Slides -->
+        <div class="swiper-slide"><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1493892988&di=98a327620f0c28de09808380edfbbb45&imgtype=jpg&er=1&src=http%3A%2F%2Fpic24.nipic.com%2F20121006%2F8733453_203133518000_2.jpg" /></div>
+        <div class="swiper-slide"><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1493298273418&di=a09dbcd34a97c0a0f84d42d20fe0d2c8&imgtype=0&src=http%3A%2F%2Fpic.58pic.com%2F58pic%2F15%2F63%2F79%2F12P58PICs3X_1024.jpg" /></div>
+        <div class="swiper-slide"><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1493298322216&di=1a114a839483e40f4fa3b89d9965947c&imgtype=0&src=http%3A%2F%2Fpic31.nipic.com%2F20130802%2F13331903_051110199000_2.jpg" /></div>
+      </div>
+      <!-- If we need pagination -->
+      <div class="swiper-pagination"></div>
+    </div>
+    <!-- 未认证 -->
+    <div class="no-ceritify">
+      <img src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2745685655,4075825738&fm=23&gp=0.jpg" />
+      <p>暂无数据，是否立即查看</p>
+      <div class="no-ceritify-btn"><button type="button" id="go-to-ceritify">立即查看</button></div>
+    </div>
+    <!-- 已认证 -->
+   <!--  <div class="weui-cells_title" style="width: 100%;background: #ecd0d0;margin-top: 10px;font-size:16px;color:red;">
+      <span>证书信息</span><span style="float:right;margin-right:45px;">展开</span>
+    </div>
+    <div class="weui-cells" style="width: 100%;background: #f9f3f3;margin-top: -5px">
+      <div class="weui-cell">
+        <div class="weui-cell__hd"><img src="./images/baoquan_logo.png" alt="" style="width:40px;height:40px;margin-right:5px;display:block"></div>
+        <div class="weui-cell__bd" style="margin-left:10px;">
+          <p>浙江数秦科技有限公司</p>
+        </div>
+        <div class="weui-cell__ft"><a href="">查看详情</a></div>
+      </div>
+      <div class="weui-cell">
+        <div class="weui-cell__bd">
+          <p>企业评分</p>
+        </div>
+        <div class="weui-cell__ft">120</div>
+      </div>
+      <div class="weui-cell">
+        <div class="weui-cell__bd">
+          <p>网站域名</p>
+        </div>
+        <div class="weui-cell__ft">www.baoquan.com</div>
+      </div>
+      <div class="weui-cell">
+        <div class="weui-cell__bd">
+          <p>证书编号</p>
+        </div>
+        <div class="weui-cell__ft">BQ2017011248975499</div>
+      </div>
+      <div class="weui-cell">
+        <div class="weui-cell__bd">
+          <p>证书有效期</p>
+        </div>
+        <div class="weui-cell__ft">2017-04-14~2018-04-14</div>
+      </div>
+    </div> -->
+
+    <!-- 合作伙伴 -->
+    <div class="partner">
+      <button type="button">合作伙伴</button>
+      <div class="corporate-logo">
+          <div class="item" >
+            <a href="http://www.zjmax.com" target="_blank">
+              <img src="http://chengxin-public.oss-cn-shanghai.aliyuncs.com/chengxin_rz/148938385320135d2fe276bf1497097ec500812128e9f78e3173c505c5344839192e1cc325101b.png" width="80px"  />
+            </a>
+          </div>
+          <div class="item">
+            <a href="http://www.suanlibao.com" target="_blank">
+              <img src="http://chengxin-public.oss-cn-shanghai.aliyuncs.com/chengxin_rz/148938394316633472ed813a803dd9d801fc1f4312f588ef59b7a2babec21dab7d0a4010a840c45.svg" width="80px" />
+            </a>
+          </div>
+          <div class="item">
+            <a href="https://www.qian360.com" target="_blank">
+              <img src="http://chengxin-public.oss-cn-shanghai.aliyuncs.com/chengxin_rz/149282445615368b46ac010ad53775e7bc91715cce4882c7f6a339ca60ba956a664f2717725d83a.png" width="80px" />
+            </a>
+          </div>
+          <div class="item">
+            <a href="http://www.qbm360.com/" target="_blank">
+              <img src="http://chengxin-public.oss-cn-shanghai.aliyuncs.com/chengxin_rz/14928245631121132c575d30e81fe404ce2592ed830937b2adb8b59e749511b306ce4a1c45a99a0.png" width="80px" />
+            </a>
+          </div>
+      </div>
+    </div> 
+
+
+        </div>
+        <div id="tab2" class="weui-tab__bd-item">
+          
+   <div class="score">
+      <!-- 暂无评分 -->
+      <div class="point">
+        <p>暂无评分</p>
+        <p>信用穿透，不可篡改，社会化评分，信用叠加</p>
+        <div class="point-score"><button>去评分</button></div>
+      </div>
+      <!-- 有评分 -->
+     <!--  <div class="point">
+        <p style="margin-top:10px;font-weight:bold;font-size:40px;">140分</p>
+        <p>信用穿透，不可篡改，社会化评分，信用叠加</p>
+        <div class="point-score"><button>查看评分</button></div>
+      </div> -->
+      <!-- introduce -->
+      <div class="introduce">
+        <div class="score-logo">
+          <div class="score-item">
+            <a href="http://www.zjmax.com" target="_blank">
+              <img src="./images/safe_pro.png" width="80px" height="80px" />
+            </a>
+            <p>安全保障</p>
+            
+          </div>
+          <div class="score-item">
+            <a href="http://www.suanlibao.com" target="_blank">
+              <img src="./images/data.png" width="80px" height="80px" />
+            </a>
+            <p>平台数据</p>
+          </div>
+          <div class="score-item">
+            <a href="https://www.qian360.com" target="_blank">
+              <img src="./images/company_introduce.png" width="80px" height="80px" />
+            </a>
+            <p>企业简介</p>
+          </div>
+        </div>
+      </div>
+      <div class="up-score">
+        <button>提升评分</button>
+      </div>
+    </div>
+        </div>  
+        <div id="tab3" class="weui-tab__bd-item">
+         <div class="tax">
+      <div class="banner">
+        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1493892988&di=98a327620f0c28de09808380edfbbb45&imgtype=jpg&er=1&src=http%3A%2F%2Fpic24.nipic.com%2F20121006%2F8733453_203133518000_2.jpg" />
+      </div>
+      <div class='demos-content-padded'>
+        <a href="https://www.baoquan.com/sign-in?lang=zh" class="weui-btn weui-btn_primary">抵税条件</a>
+        
+        <a href="javascript:;" class="weui-btn weui-btn_default">我要抵税</a>
+       
+      </div>
+    </div>
+        </div>
+        <div id="tab4" class="weui-tab__bd-item">
+           <div class="user">
+      <div class="user-head">
+        <div class="head-img"><img src="./images/default_header.png" /></div>
+        <div class="head-body"><h4>18367803500</h4><span>ID:18367803500</span></div>
+        <div style="clear: both;"></div>
+      </div>
+      <div class="user-body">
+        <div class="weui-cell">
+          <div class="weui-cell__hd"><img src="./images/company_info.png"></div>
+          <div class="weui-cell__bd">
+            <p>企业资料</p>
+          </div>
+        </div>
+        <div class="weui-cell">
+          <div class="weui-cell__hd"><img src="./images/bank_card.png"></div>
+          <div class="weui-cell__bd">
+            <p>银行卡</p>
+          </div>
+        </div>
+        <div class="weui-cell">
+          <div class="weui-cell__hd"><img src="./images/score_info.png"></div>
+          <div class="weui-cell__bd">
+            <p>评分资料</p>
+          </div>
+        </div>
+        <div class="weui-cell">
+          <div class="weui-cell__hd"><img src="./images/tax.png"></div>
+          <div class="weui-cell__bd">
+            <p>抵税资料</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+        </div>
+      </div>
+      <div class="weui-tabbar" style="height:60">
+        <a href="#tab1" class="weui-tabbar__item weui-bar__item--on">
+
+          <div class="weui-tabbar__icon">
+            <img src="" alt="">
+          </div>
+          <p class="weui-tabbar__label">首页</p>
+        </a>
+        <a href="#tab2" class="weui-tabbar__item">
+          <div class="weui-tabbar__icon">
+            <img src="" alt="">
+          </div>
+          <p class="weui-tabbar__label">评分</p>
+        </a>
+        <a href="#tab3" class="weui-tabbar__item">
+          <div class="weui-tabbar__icon">
+            <img src="" alt="">
+          </div>
+          <p class="weui-tabbar__label">抵税</p>
+        </a>
+        <a href="#tab4" class="weui-tabbar__item">
+          <div class="weui-tabbar__icon">
+            <img src="" alt="">
+          </div>
+          <p class="weui-tabbar__label">我的</p>
+        </a>
+      </div>
+    </div>
+
+    <script src="./lib/jquery-2.1.4.js"></script>
+    <script src="./lib/fastclick.js"></script>
+    <script>
+      $(function() {
+        FastClick.attach(document.body);
+      });
+    </script>
+    <script src="./js/jquery-weui.js"></script>
+      <script src="./js/swiper.js"></script>
+
+        <script>
+          $(".swiper-container").swiper({
+            loop: true,
+            autoplay: 3000
+          });
+        </script>
+  
+  </body>
+</html>

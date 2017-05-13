@@ -1,0 +1,76 @@
+
+    .swiper-container {
+    width: 100%;
+    } 
+
+    .swiper-container img {
+    display: block;
+    width: 100%;
+    }
+    .no-ceritify{
+    margin-top: 10px;
+    background: #eadada;
+    }
+
+    .no-ceritify img{
+    display: block;
+    width: 40%;
+    height: 40%;
+    padding-top: 10px;
+    margin: 0 auto;
+    }
+    .no-ceritify p{
+    margin-top: 10px;
+    font-size: 16px;
+    color: white;
+    text-align: center; 
+    }
+    .no-ceritify-btn button{
+
+    width:140px;
+    height:40px;
+    line-height:40px;
+    text-align:center;
+    color:#fff;
+    border:none;
+    border-radius:8px;
+    background:#086bd0;
+    display: block;
+    margin: 0 auto;
+    }
+    .no-ceritify-btn{
+    margin-top: 10px;
+    padding-bottom: 10px;
+    }
+    .partner{
+    margin-top: 10px;
+    overflow: hidden;  
+    }
+    .partner button{
+    width:140px;
+    height:40px;
+    line-height:40px;
+    text-align:center;
+    color:#fff;
+    border:none;
+    border-radius:8px;
+    background:#558dcc;
+    display: block;
+    margin: 0 auto;
+    }
+
+    .corporate-logo {
+    display: flex;
+    margin: 20px auto;
+    margin-right: -20px;   
+    font-size: 0;
+    }
+
+    .item {
+    display: inline-block;   
+    vertical-align: top;   
+    font-size: 16px;   
+    height: 100px;   
+    width: calc(25% - 20px);   
+    margin-right: 20px; 
+  }
