@@ -34,45 +34,40 @@
 
                 <div id="tab4" class="weui-tab__bd-item weui-tab__bd-item--active">
 
+                    <header class='demos-header'>
+                      <h1 class="demos-title">消费</h1>
+                    </header>
                     <div class="page__bd">
                         <div class="weui-panel">
-                            <div class="weui-panel__hd">你好，<?php echo substr($user->phone, 0,3)."****".substr($user->phone, 7, 4); ?>，平台id：<?php echo $user->id;?></div>
-                            <div class="weui-panel__bd">
-                                <div class="weui-media-box weui-media-box_small-appmsg">
-                                    <div class="weui-cells">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="weui-panel__hd">我的订单</div>
+                            <div class="weui-panel__hd"></div>
                             <div class="weui-panel__bd">
                                 <div class="weui-media-box weui-media-box_small-appmsg">
                                     <div class="weui-cells">
                                         <a class="weui-cell weui-cell_access" href="javascript:;">
                                             <div class="weui-cell__hd"><img src="../images/icon_blank.png" alt="" style="width:20px;margin-right:5px;display:block"></div>
                                             <div class="weui-cell__bd weui-cell_primary">
-                                                <p>订单记录</p>
-                                            </div>
-                                            <span class="weui-cell__ft"></span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="weui-panel__hd">账户安全</div>
-                            <div class="weui-panel__bd">
-                                <div class="weui-media-box weui-media-box_small-appmsg">
-                                    <div class="weui-cells">
-                                        <a class="weui-cell weui-cell_access" href="javascript:;">
-                                            <div class="weui-cell__hd"><img src="../images/icon_blank.png" alt="" style="width:20px;margin-right:5px;display:block"></div>
-                                            <div class="weui-cell__bd weui-cell_primary">
-                                                <p>修改登录密码</p>
+                                                <p>太平洋保险</p>
                                             </div>
                                             <span class="weui-cell__ft"></span>
                                         </a>
                                         <a class="weui-cell weui-cell_access" href="javascript:;">
                                             <div class="weui-cell__hd"><img src="../images/icon_blank.png" alt="" style="width:20px;margin-right:5px;display:block"></div>
                                             <div class="weui-cell__bd weui-cell_primary">
-                                                <p>实名认证</p>
+                                                <p>华联超市</p>
+                                            </div>
+                                            <span class="weui-cell__ft"></span>
+                                        </a>
+                                        <a class="weui-cell weui-cell_access" href="<?php echo base_url('Consume/detail'); ?>">
+                                            <div class="weui-cell__hd"><img src="../images/icon_blank.png" alt="" style="width:20px;margin-right:5px;display:block"></div>
+                                            <div class="weui-cell__bd weui-cell_primary">
+                                                <p>物美商城</p>
+                                            </div>
+                                            <span class="weui-cell__ft"></span>
+                                        </a>
+                                        <a class="weui-cell weui-cell_access" href="javascript:;">
+                                            <div class="weui-cell__hd"><img src="../images/icon_blank.png" alt="" style="width:20px;margin-right:5px;display:block"></div>
+                                            <div class="weui-cell__bd weui-cell_primary">
+                                                <p>在线交税</p>
                                             </div>
                                             <span class="weui-cell__ft"></span>
                                         </a>
@@ -81,9 +76,6 @@
                             </div>
 
                         </div>
-                    </div>
-                    <div style="margin:30px auto 50px auto;width:60%;">
-                        <a href="logout" class="weui-btn weui-btn_default">退出登录</a>
                     </div>
                 </div>
             </div>

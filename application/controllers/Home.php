@@ -35,6 +35,51 @@ class Home extends CI_Controller {
 		$this->load->view('Home/cart.html', $data);
     }
 
+    public function score()
+    {
+        $user = $this->session->userdata('user');
+        $user = json_decode($user);
+        if(!isset($user->id)) {
+            redirect('user/login');
+        }
+
+        //获取用户地址
+        $this->load->model("Address_model");
+        $addresses = $this->Address_model->all($user->id);
+
+        //获取用户详情
+        $this->load->model("User_model");
+        $user_detail = $this->User_model->detail($user->id);
+
+        $data = array();
+        $data['user'] = $user;
+        $data['addresses'] = $addresses;
+        $data['user_detail'] = $user_detail;
+		$this->load->view('Home/score.html', $data);
+    }
+
+    public function consume()
+    {
+        $user = $this->session->userdata('user');
+        $user = json_decode($user);
+        if(!isset($user->id)) {
+            redirect('user/login');
+        }
+
+        //获取用户地址
+        $this->load->model("Address_model");
+        $addresses = $this->Address_model->all($user->id);
+
+        //获取用户详情
+        $this->load->model("User_model");
+        $user_detail = $this->User_model->detail($user->id);
+
+        $data = array();
+        $data['user'] = $user;
+        $data['addresses'] = $addresses;
+        $data['user_detail'] = $user_detail;
+		$this->load->view('Home/consume.html', $data);
+    }
     public function news()
     {
         $data = array();

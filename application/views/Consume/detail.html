@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-        <meta name="description" content="美力泉">
+        <meta name="description" content="社会化诚信">
         <link rel="stylesheet" href="../lib/weui.min.css">
         <link rel="stylesheet" href="../css/jquery-weui.css">
         <link rel="stylesheet" href="../css/demos.css">
@@ -98,7 +98,6 @@
                     </div>
                     <div class="weui-btn-area">
                         <a class="weui-btn weui-btn_primary" href="javascript:" id="order_btn">下单</a>
-                        <a class="weui-btn weui-btn_default" href="<?php echo base_url('cash/recharge'); ?>">我的资金：￥<span id="cash_amount_span" value="<?php echo $user_detail->cash_amount; ?>"><?php echo $user_detail->cash_amount; ?></span>，去充值</a>
                     </div>
                 </div>
                 <div id="tab3" class="weui-tab__bd-item">
@@ -217,7 +216,6 @@
                     $("#s11_input").val(1);
                     $("#amount_span").text(amount+1500);
                 }else {
-                    $("#s11_input").val(0);
                     $("#s11_div").hide();
                     $("#amount_span").text(amount-1500*$("#s11_input").val());
                 }
@@ -230,7 +228,6 @@
                     $("#s12_input").val(1);
                     $("#amount_span").text(amount+2000);
                 }else {
-                    $("#s12_input").val(2);
                     $("#s12_div").hide();
                     $("#amount_span").text(amount-2000*$("#s12_input").val());
                 }

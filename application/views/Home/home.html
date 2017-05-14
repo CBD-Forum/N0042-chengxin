@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>美力泉</title>
+        <title>社会化诚信</title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-        <meta name="description" content="美力泉">
+        <meta name="description" content="社会化诚信">
         <link rel="stylesheet" href="../lib/weui.min.css">
         <link rel="stylesheet" href="../css/jquery-weui.css">
         <link rel="stylesheet" href="../css/demos.css">
@@ -36,36 +36,126 @@
                         <!-- If we need pagination -->
                         <div class="swiper-pagination"></div>
                     </div>
-                    <?php foreach($products as $key=>$product) { ?>
-                    <?php if($key%2==1) continue; ?>
                     <div class="weui-flex" style="width: 100%;">
                         <div class="weui-flex__item" style="width: 40%;">
                             <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
                                 <div class="weui-media-box__hd">
-                                    <img class="weui-media-box__thumb" src="<?php echo $product->head_img; ?>" alt="">
+                                    <img class="weui-media-box__thumb" src="./images/1.png" alt="">
                                 </div>
                                 <div class="weui-media-box__bd">
-                                    <h4 class="weui-media-box__title"><?php echo $product->name; ?></h4>
-                                    <p class="weui-media-box__desc">价格：￥<?php echo $product->price; ?></p>
+                                    <h4 class="weui-media-box__title">工商资料</h4>
+                                    <p class="weui-media-box__desc"></p>
                                 </div>
                             </a>
                         </div>
-                        <?php if(isset($products[$key+1])) { ?>
-                        <?php $product = $products[$key+1]; ?>
                         <div class="weui-flex__item">
                             <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
                                 <div class="weui-media-box__hd">
-                                    <img class="weui-media-box__thumb" src="<?php echo $product->head_img; ?>" alt="">
+                                    <img class="weui-media-box__thumb" src="./images/2.png" alt="">
                                 </div>
                                 <div class="weui-media-box__bd">
-                                    <h4 class="weui-media-box__title"><?php echo $product->name; ?></h4>
-                                    <p class="weui-media-box__desc">价格：￥<?php echo $product->price; ?></p>
+                                    <h4 class="weui-media-box__title">灵析公益</h4>
+                                    <p class="weui-media-box__desc"></p>
                                 </div>
                             </a>
                         </div>
-                        <?php } ?>
                     </div>
-                    <?php } ?>
+                    <div class="weui-flex" style="width: 100%;">
+                        <div class="weui-flex__item" style="width: 40%;">
+                            <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                                <div class="weui-media-box__hd">
+                                    <img class="weui-media-box__thumb" src="./images/3.png" alt="">
+                                </div>
+                                <div class="weui-media-box__bd">
+                                    <h4 class="weui-media-box__title">芝麻信用</h4>
+                                    <p class="weui-media-box__desc"></p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="weui-flex__item">
+                            <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                                <div class="weui-media-box__hd">
+                                    <img class="weui-media-box__thumb" src="./images/4.png" alt="">
+                                </div>
+                                <div class="weui-media-box__bd">
+                                    <h4 class="weui-media-box__title">中国移动</h4>
+                                    <p class="weui-media-box__desc"></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="weui-flex" style="width: 100%;">
+                        <div class="weui-flex__item" style="width: 40%;">
+                            <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                                <div class="weui-media-box__hd">
+                                    <img class="weui-media-box__thumb" src="./images/5.png" alt="">
+                                </div>
+                                <div class="weui-media-box__bd">
+                                    <h4 class="weui-media-box__title">税务流水</h4>
+                                    <p class="weui-media-box__desc"></p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="weui-flex__item">
+                            <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                                <div class="weui-media-box__hd">
+                                    <img class="weui-media-box__thumb" src="./images/6.png" alt="">
+                                </div>
+                                <div class="weui-media-box__bd">
+                                    <h4 class="weui-media-box__title">银行授信</h4>
+                                    <p class="weui-media-box__desc"></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="weui-flex" style="width: 100%;">
+                        <div class="weui-flex__item" style="width: 40%;">
+                            <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                                <div class="weui-media-box__hd">
+                                    <img class="weui-media-box__thumb" src="./images/7.png" alt="">
+                                </div>
+                                <div class="weui-media-box__bd">
+                                    <h4 class="weui-media-box__title">太平洋保险</h4>
+                                    <p class="weui-media-box__desc"></p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="weui-flex__item">
+                            <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                                <div class="weui-media-box__hd">
+                                    <img class="weui-media-box__thumb" src="./images/8.png" alt="">
+                                </div>
+                                <div class="weui-media-box__bd">
+                                    <h4 class="weui-media-box__title">华联超市</h4>
+                                    <p class="weui-media-box__desc"></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="weui-flex" style="width: 100%;">
+                        <div class="weui-flex__item" style="width: 40%;">
+                            <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                                <div class="weui-media-box__hd">
+                                    <img class="weui-media-box__thumb" src="./images/9.png" alt="">
+                                </div>
+                                <div class="weui-media-box__bd">
+                                    <h4 class="weui-media-box__title">物美商城</h4>
+                                    <p class="weui-media-box__desc"></p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="weui-flex__item">
+                            <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                                <div class="weui-media-box__hd">
+                                    <img class="weui-media-box__thumb" src="./images/10.png" alt="">
+                                </div>
+                                <div class="weui-media-box__bd">
+                                    <h4 class="weui-media-box__title">在线交税</h4>
+                                    <p class="weui-media-box__desc"></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
                 </div>
                 <div id="tab2" class="weui-tab__bd-item">
                 </div>
@@ -75,33 +165,7 @@
                 </div>
             </div>
 
-            <div class="weui-tabbar">
-                <a href="<?php echo base_url(); ?>" class="weui-tabbar__item weui-bar__item-on">
-                    <div class="weui-tabbar__icon">
-                        <img src="<?php echo base_url('images/icon_nav_button.png'); ?>" alt="">
-                    </div>
-                    <p class="weui-tabbar__label">首页</p>
-                </a>
-                <a href="<?php echo base_url('home/cart'); ?>" class="weui-tabbar__item">
-                    <div class="weui-tabbar__icon">
-                        <img src="<?php echo base_url('images/icon_nav_msg.png'); ?>" alt="">
-                    </div>
-                    <p class="weui-tabbar__label">购物车</p>
-                </a>
-                <a href="<?php echo base_url('home/news'); ?>" class="weui-tabbar__item">
-                    <span class="weui-badge" style="position: absolute;top: -.4em;right: 1em;">1</span>
-                    <div class="weui-tabbar__icon">
-                        <img src="<?php echo base_url('images/icon_nav_article.png'); ?>" alt="">
-                    </div>
-                    <p class="weui-tabbar__label">通知</p>
-                </a>
-                <a href="<?php echo base_url('user/index'); ?>" class="weui-tabbar__item">
-                    <div class="weui-tabbar__icon">
-                        <img src="<?php echo base_url('images/icon_nav_cell.png'); ?>" alt="">
-                    </div>
-                    <p class="weui-tabbar__label">账户</p>
-                </a>
-            </div>
+            <?php $this->load->view('Common/tabbar.html'); ?>
         </div>
 
         <script src="../lib/jquery-2.1.4.js"></script>

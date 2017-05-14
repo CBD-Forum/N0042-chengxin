@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>社会化诚信</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+        <meta name="description" content="">
+
+        <link rel="stylesheet" href="../lib/weui.min.css">
+        <link rel="stylesheet" href="../css/jquery-weui.css">
+        <link rel="stylesheet" href="../css/demos.css">
+
+    </head>
+
+    <body ontouchstart>
+        <div class="weui-msg">
+            <div class="weui-msg__icon-area">
+                <img src="../images/qrcode.png" style="width:60%;"/>
+            </div>
+            <div class="weui-msg__text-area">
+                <p class="weui-msg__desc" id="address">1B7KDheAFenZ4yVWRsjaT3vkLfKwQBpeLy</p>
+                <a class="weui-btn weui-btn_default" href="javascript:" id="new_address">生成新的地址</a>
+                <h2 class="weui-msg__title">灵析公益分数：10</h2>
+            </div>
+            <div class="weui-panel weui-panel_access">
+                <div class="weui-cells__title">诚信记录</div>
+                <div class="weui-cells">
+                    <div class="weui-cell">
+                        <div class="weui-cell__hd">
+                            <p>+3</p>
+                        </div>
+                        <div class="weui-cell__bd">
+                        </div>
+                        <div class="weui-cell__ft">
+                            <?php echo Date("Y-m-d H:i:s", time()-600); ?>
+                            <p>f9493f15b76f8bb5f0e4724de6a30</p>
+                        </div>
+                    </div>
+                    <div class="weui-cell">
+                        <div class="weui-cell__hd">
+                            <p>+4</p>
+                        </div>
+                        <div class="weui-cell__bd">
+                        </div>
+                        <div class="weui-cell__ft">
+                            <?php echo Date("Y-m-d H:i:s", time()-1600); ?>
+                            <p>f9493f15b76f8bb5f0e4724de6a30</p>
+                        </div>
+                    </div>
+                    <div class="weui-cell">
+                        <div class="weui-cell__hd">
+                            <p>+3</p>
+                        </div>
+                        <div class="weui-cell__bd">
+                        </div>
+                        <div class="weui-cell__ft">
+                            <?php echo Date("Y-m-d H:i:s", time()-2600); ?>
+                            <p>f9493f15b76f8bb5f0e4724de6a30</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--
+            <div class="weui-msg__opr-area">
+                <p class="weui-btn-area">
+                <a href="javascript:;" class="weui-btn weui-btn_primary">推荐操作</a>
+                <a href="javascript:;" class="weui-btn weui-btn_default">辅助操作</a>
+                </p>
+            </div>
+            -->
+            <div class="weui-msg__extra-area">
+                <div class="weui-footer">
+                    <p class="weui-footer__links">
+                    <a href="javascript:void(0);" class="weui-footer__link">社会化诚信</a>
+                    </p>
+                    <p class="weui-footer__text">Copyright © 2016-2017 </p>
+                </div>
+            </div>
+        </div>
+        <script src="../lib/jquery-2.1.4.js"></script>
+        <script src="../lib/fastclick.js"></script>
+        <script>
+            $(function() {
+                FastClick.attach(document.body);
+            });
+        </script>
+        <script src="../js/jquery-weui.js"></script>
+        <script>
+            $("#new_address").click(function() {
+                $.ajax({
+                    url: '<?php echo base_url("api/v1/wallet/getnewaddress"); ?>',
+                    type: "POST",
+                    success: function(data) {
+                        $("#address").text(data);
+                    }
+                });
+            });
+        </script>
+
+    </body>
+</html>
