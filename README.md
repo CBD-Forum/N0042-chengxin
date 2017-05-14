@@ -129,3 +129,85 @@ query
 $ peer chaincode query -n wlcc -c '{"Args":["query","a"]}' -o 127.0.0.1:7050 -C ch1
 ```
 
+### 7、fabric-sdk-php架构及使用
+farbric-sdk-php在application/libraries目录下，包含以下文件：
+```
+Chain.php
+Channel.php
+Orderer.php
+Peer.php
+```
+
+Chain的操作包括：
+```
+create($n,$v,$p)
+instantiate($n,$v,$c,$cc,$o="localhost:7050")
+invoke($n,$c, $CC, $o="localhost:7050")
+version()
+```
+Channel的操作包括：
+```
+create_c($o, $c)
+join_to($b)
+```
+Orderer的操作包括：
+```
+start()
+```
+Peer的操作包括：
+```
+start()
+version()
+```
+
+### 8、sdk使用示例
+在 application/controllers/api/v1/Wallet.php中：
+```
+public function getnewaddress()
+{
+      $c = '\'{"function":"getNewAddress","Args":[]}\'';
+      $ret = $this->chain->invoke("wlcc", $c, "ch20");
+      $address = preg_match('/address\\\\\":\\\\\"(.*)\\\\\",\\\\\"balance/', $ret, $matches);
+      echo $matches[1];
+      exit;
+      //return $matches[1];
+}
+```
+
+```
+public function query($a)
+{
+    $c = '\'{"function":"query","Args":["'. $a .'"]}\'';
+    $ret = $this->chain->invoke("wlcc", $c, "ch20");
+    $response = preg_match('/payload:(.*?)>/', $ret, $matches);
+    $ll = json_decode($matches[1]);
+    $ll = json_decode($ll);
+    echo $ll->balance;
+    exit;
+}
+```
+
+```
+public function sendFromToAddress($a,$b,$amount)
+{
+    $cmd = "export GOPATH=/home/ubuntu/go && export PATH=\$PATH:/home/ubuntu/go/src/github.com/hyperledger/fabric/build/bin && cd ~/go/src/github.com/hyperledger/fabric && peer chaincode invoke -n wlcc -o localhost:7050 -C ch2 -c '{\"function\":\"sendToAddress\",\"Args\":[\"".$a."\",\"".$b."\",\"".$amount."\"]}'";
+    $c = '\'{"function":"sendToAddress","Args":["'. $a .'","'. $b .'","'. $amount .'"]}\'';
+    $ret = $this->chain->invoke("wlcc", $c, "ch20");
+    var_dump($ret);
+}
+```
+
+以及在 application/controllers/api/v1/Miner.php中：
+```
+public function create($address)
+{
+    $c = '\'{"function":"updateBalance","Args":["'. $address .'"]}\'';
+    $ret = $this->chain->invoke("wlcc", $c, "ch20");
+    var_dump($ret);
+}
+```
+
+
+
+   
+
